@@ -45,7 +45,7 @@ int main(){
             break;
         }
         else{
-            printf(colorBlue "\nSide length is not proper\n" colorReset);
+            printf("\nSide length is not proper\n");
         }
     }
     system("cls");
