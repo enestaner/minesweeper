@@ -3,6 +3,14 @@
 #include <time.h>
 #include <math.h>
 
+#define colorRed     "\e[1;31m"
+#define colorGreen   "\e[1;32m"
+#define colorYellow  "\e[1;33m"
+#define colorBlue    "\e[1;34m"
+#define colorMagenta "\e[1;35m"
+#define colorCyan    "\e[1;36m"
+#define colorReset   "\e[1;0m"
+
 void tableFiller(int *table, int length, char type, int bombAmount);
 void tableGetter(int *table, char type, int length);
 int bombCounter(char difficulty, int length);
@@ -10,7 +18,7 @@ int bombController(int row, int col, int *ptrGame, int length);
 void flagController(int row, int col, int *ptrFake, int length);
 void gameFinisher(int *ptrGame, int *ptrFake, int length);
 void pointFinder(int row, int col, int length, int *list);
-void bombScanner(int *ptrGame, int length, int row, int col, int *ptrFake, int a, int b, int newRow, int newCol);
+void bombScanner(int *ptrGame, int length, int row, int col, int *ptrFake, int newRow, int newCol, int a, int b);
 void bombAmountWriter(int *ptrGame, int length, int row, int col, int *ptrFake);
 void tableFixer(int *ptrFake, int length);
 int gameController(int *ptrFake, int *ptrGame, int length, int bomb);
@@ -19,28 +27,32 @@ int list[4];
 
 int main(){
 
-    int length, *gameTable, *fakeTable, r, c, bomb = 0, *bombTable, i, bombAmount;
+    int length, r, c, i, bombAmount, bomb = 0, *gameTable, *fakeTable, *bombTable;
     char difficulty, flag;
 
-    printf("\t\tRules:\n-Side length should be higher than 4\n-If you want to open flag points you should remove flag first\n-To win this game you should find and open all non-mine boxes\n-If you entered wrong difficulty it would be assigned Normal\n");
+    printf("\t\tRules\n\n");
+    printf( "-Side length should be between 4 and 50\n" );
+    printf( "-If you want to open flag points you should remove flag first\n" );    
+    printf( "-To win this game you should find and open all non-mine boxes\n" );  
+    printf( "-If you entered wrong difficulty it would be assigned Normal\n" );      
     
     while(1){
-        printf("Enter the side length: "); scanf("%d", &length);
+        printf( "\nEnter the side length: " ); scanf("%d", &length);
         getchar();
-        printf("Choose the difficulty E-M-H: "); scanf("%c", &difficulty);
+        printf( "Choose the difficulty E-M-H: " ); scanf("%c", &difficulty);
         
-        if(length < 4){
-            printf("Side length cant be shorter than 4\n");
-        }
-        else{
+        if(length >= 4 && length <= 50){
             break;
         }
+        else{
+            printf(colorBlue "\nSide length is not proper\n" colorReset);
+        }
     }
+    system("cls");
 
     gameTable = (int*) malloc(sizeof(int) * (length * length));
     bombTable = (int*) malloc(sizeof(int) * (length * length));
     fakeTable = (int*) malloc(sizeof(int) * (length * length));
-
     bombAmount = bombCounter(difficulty, length);
 
     tableFiller(gameTable, length, 'g', bombAmount);
@@ -48,23 +60,31 @@ int main(){
 
     for(i = 0; i < (length * length); i++){
             *(bombTable + i) = 9;
-        }
+    }
     
     for(r = 1; r <= length; r++){
         for(c = 1; c <= length; c++){
             pointFinder(r, c, length, list);
-            bombScanner(gameTable, length, r, c, bombTable, list[2], list[3], list[0], list[1]);
+            bombScanner(gameTable, length, r, c, bombTable, list[0], list[1], list[2], list[3]);
         }
     }
 
     while(1){
-        system("cls");
         tableGetter(fakeTable, 'f', length);
+        printf(" Enter the coordinates (row column) \texample >>> 1 1\n To change flag (row column flag) \texample >>> 2 2 f\n\n");
+        scanf("%d %d", &r, &c);
 
-        printf("Enter the coordinates (row column bomb) example >>> 1 1 b, to change flag (row column flag) example >>> 2 2 f: "); 
-        scanf("%d %d %c", &r, &c, &flag);
+        if(getchar() == ' '){
+            flag = getc(stdin);
+            getchar();
+        }
+        else{
+            flag = 'b';
+        }
+        system("cls");
 
         if(r <= 0 || r > length || c <= 0 || c > length){
+            printf(colorGreen "Wrong coordinates, try again\n\n" colorReset);
             continue;
         }
 
@@ -73,7 +93,11 @@ int main(){
             continue;
         }
         else if(*(fakeTable + ((r - 1) * length) + c - 1) == 'F'){
-            printf("\nFlag point couldnt be open\n\n");
+            printf(colorGreen "Flag point couldnt be open\n\n" colorReset);
+            continue;
+        }
+        else if(*(fakeTable + ((r - 1) * length) + c - 1) != (char)248){
+            printf(colorGreen "This point already opened\n\n" colorReset);
             continue;
         }
         else{
@@ -82,12 +106,21 @@ int main(){
 
         if(bomb == 1){
             gameFinisher(gameTable, fakeTable, length);
-            printf("\n-----GAME OVER-----\n\n");
+            
+            printf(colorRed "\n\t");
+            for(i = 0; i < length; i++){
+                printf("-");
+            }
+            printf(" GAME OVER ");
+            for(i = 0; i < length; i++){
+                printf("-");
+            }
+            printf("\n\n" colorReset);
+
             tableGetter(fakeTable, 'f', length);
             getchar();
             getchar();
             break;
-               
         }
         else if(bomb == 0){
             bombAmountWriter(bombTable, length, r, c, fakeTable);
@@ -95,33 +128,33 @@ int main(){
         }
 
         if(gameController(fakeTable, gameTable, length, bombAmount) == 1){
-            printf("\n\t\tCongratulations you win :)\n");
+            printf( colorCyan "\n\t\tCONGRATULATIONS YOU WIN!\n\n" colorReset);
             tableGetter(fakeTable, 'f', length);
             getchar();
             getchar();
             break;
         }
     }
-    
     free(bombTable);
     free(gameTable);
     free(fakeTable);
+    
     return 0;
 }
 
 int bombCounter(char difficulty, int length){
 
     if(difficulty == 'e' || difficulty == 'E'){
-        return round(length * length * 0.15);
+        return round(length * length * 0.07);
     }
     else if(difficulty == 'm' || difficulty == 'M'){
-        return round(length * length * 0.25);
+        return round(length * length * 0.12);
     }
     else if(difficulty == 'h' || difficulty == 'H'){
-        return round(length * length * 0.45);
+        return round(length * length * 0.30);
     }
     else{
-        return round(length * length * 0.25);
+        return round(length * length * 0.12);
     }
 }
 
@@ -168,37 +201,48 @@ void tableGetter(int *table, char type, int length){
     }
     else if(type == 'f'){
 
-        printf("    ");
+        printf("     ");
         for(i = 0; i < length; i++){
-            printf("%2d ", k);
+            printf( colorMagenta "%2d " colorReset, k);
             k++;
         }
         printf("\n");
 
-        printf("   ");
+        printf("    ");
         for(i = 0; i < length * 2 - ((length / 2) - 1); i++){
-            printf("%c%c", (char)194, (char)196);
+            printf( colorYellow "%c%c" colorReset, (char)194, (char)196);
         }
-        printf("%c", (char)194);
+        printf( colorYellow "%c" colorReset, (char)194);
         printf("\n");
 
         k = 1;
         for(i = 0; i < length; i++){
-            printf("%-3d", k);
+            printf( colorMagenta " %-3d" colorReset, k);
             k++;
-            printf("%c", (char)195);
+            printf( colorYellow "%c" colorReset, (char)195);
             for(j = 0; j < length; j++){
-                printf("%2c ", *(table + i * length + j));
+                if(*(table + i * length + j) == 'F'){
+                    printf( colorGreen "%2c " colorReset, *(table + i * length + j));
+                }
+                else if(*(table + i * length + j) != (char)248 && *(table + i * length + j) != '-'){
+                    printf( colorRed "%2c " colorReset, *(table + i * length + j));
+                }
+                else if(*(table + i * length + j) == '-'){
+                    printf(colorBlue "%2c " colorReset, *(table + i * length + j));
+                }
+                else{
+                    printf("%2c ", *(table + i * length + j));
+                }
             }
-            length %2 == 0 ? printf(" %c", (char)180) : printf("  %c", (char)180);
+            length %2 == 0 ? printf( colorYellow " %c" colorReset, (char)180) : printf( colorYellow "  %c" colorReset, (char)180);
             printf("\n");
         }
 
-        printf("   ");
+        printf("    ");
         for(i = 0; i < length * 2 - ((length / 2) - 1); i++){
-            printf("%c%c", (char)193, (char)196);
+            printf( colorYellow "%c%c" colorReset, (char)193, (char)196);
         }
-        printf("%c", (char)193);
+        printf( colorYellow "%c" colorReset, (char)193);
         printf("\n");
     }
 }
@@ -216,6 +260,9 @@ void flagController(int row, int col, int *ptrFake, int length){
     else if(*(ptrFake + ((row-1) * length) + col - 1) == 'F'){
         *(ptrFake + ((row-1) * length) + col - 1) = (char)248;
     }
+    else{
+        printf(colorGreen "This point is not proper for flag\n\n" colorReset);
+    }
 }
 
 void gameFinisher(int *ptrGame, int *ptrFake, int length){
@@ -224,7 +271,7 @@ void gameFinisher(int *ptrGame, int *ptrFake, int length){
     
     for(i = 0; i < length * length; i++){
         if(*(ptrGame + i) == 1){
-            *(ptrFake + i) = '*';
+            *(ptrFake + i) = 'x';
         }
         else{
             *(ptrFake + i) = (char)45;
@@ -298,7 +345,7 @@ void pointFinder(int row, int col, int length, int *list){
 
 }
 
-void bombScanner(int *ptrGame, int length, int row, int col, int *ptrFake, int a, int b, int newRow, int newCol){
+void bombScanner(int *ptrGame, int length, int row, int col, int *ptrFake, int newRow, int newCol, int a, int b){
 
     int j = 0, k = 0, sum = 0, temp = 0;
     
