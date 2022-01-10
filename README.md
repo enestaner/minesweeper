@@ -12,18 +12,26 @@
 - Written with **C**.
 
 &nbsp;
-### CHANGELOG 
 &nbsp;
-- All table **colorized**.
+## EXAMPLE GAMEPLAY
+&nbsp;
+### BEGINNING
 
-- Variable names became more **readable**.
+<iframe src="https://giphy.com/embed/bWJBSlBqrikqpbBMbv" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/beginning-bWJBSlBqrikqpbBMbv">via GIPHY</a></p>
 
-- You are no longer have to write **'b'** when entering coordinates.
+&nbsp;
+### OPENING BOXES
 
-- Game difficulty decreased to **playable** from **impossible** levels.
+<iframe src="https://giphy.com/embed/UZXJFXKbvViHNmPI56" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/opening-UZXJFXKbvViHNmPI56">via GIPHY</a></p>
 
-- Bomb symbol **'*'** changed to **'x'**. 
+&nbsp;
+### FLAG
+<iframe src="https://giphy.com/embed/aOAH9hYvDhGSoIFJUF" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/flag-aOAH9hYvDhGSoIFJUF">via GIPHY</a></p>
 
-- Added new warnings.
+&nbsp;
+### WINNING SCREEN
+<iframe src="https://giphy.com/embed/SoTfSAwYnvf0G8dIa4" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/win-SoTfSAwYnvf0G8dIa4">via GIPHY</a></p>
 
-- Fixed some bugs.
+&nbsp;
+### LOSING SCREEN
+<iframe src="https://giphy.com/embed/e7NbmLsbNimtvqquf8" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/lose-e7NbmLsbNimtvqquf8">via GIPHY</a></p>
