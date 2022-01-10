@@ -17,21 +17,21 @@
 &nbsp;
 ### BEGINNING
 
-![Alt Text]<iframe src="https://giphy.com/embed/bWJBSlBqrikqpbBMbv" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/beginning-bWJBSlBqrikqpbBMbv">via GIPHY</a></p>
+![Alt Text](https://media.giphy.com/media/bWJBSlBqrikqpbBMbv/giphy.gif)
 
 &nbsp;
 ### OPENING BOXES
 
-![Alt Text]<iframe src="https://giphy.com/embed/UZXJFXKbvViHNmPI56" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/opening-UZXJFXKbvViHNmPI56">via GIPHY</a></p>
+![Alt Text](https://media.giphy.com/media/UZXJFXKbvViHNmPI56/giphy.gif)
 
 &nbsp;
 ### FLAG
-![Alt Text]<iframe src="https://giphy.com/embed/aOAH9hYvDhGSoIFJUF" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/flag-aOAH9hYvDhGSoIFJUF">via GIPHY</a></p>
+![Alt Text](https://media.giphy.com/media/aOAH9hYvDhGSoIFJUF/giphy.gif)
 
 &nbsp;
 ### WINNING SCREEN
-![Alt Text]<iframe src="https://giphy.com/embed/SoTfSAwYnvf0G8dIa4" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/win-SoTfSAwYnvf0G8dIa4">via GIPHY</a></p>
+![Alt Text](https://media.giphy.com/media/SoTfSAwYnvf0G8dIa4/giphy.gif)
 
 &nbsp;
 ### LOSING SCREEN
-![Alt Text]<iframe src="https://giphy.com/embed/e7NbmLsbNimtvqquf8" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/lose-e7NbmLsbNimtvqquf8">via GIPHY</a></p>
+![Alt Text](https://media.giphy.com/media/e7NbmLsbNimtvqquf8/giphy.gif)
