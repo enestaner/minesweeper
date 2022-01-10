@@ -17,21 +17,21 @@
 &nbsp;
 ### BEGINNING
 
-<iframe src="https://giphy.com/embed/bWJBSlBqrikqpbBMbv" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/beginning-bWJBSlBqrikqpbBMbv">via GIPHY</a></p>
+![Alt Text]<iframe src="https://giphy.com/embed/bWJBSlBqrikqpbBMbv" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/beginning-bWJBSlBqrikqpbBMbv">via GIPHY</a></p>
 
 &nbsp;
 ### OPENING BOXES
 
-<iframe src="https://giphy.com/embed/UZXJFXKbvViHNmPI56" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/opening-UZXJFXKbvViHNmPI56">via GIPHY</a></p>
+![Alt Text]<iframe src="https://giphy.com/embed/UZXJFXKbvViHNmPI56" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/opening-UZXJFXKbvViHNmPI56">via GIPHY</a></p>
 
 &nbsp;
 ### FLAG
-<iframe src="https://giphy.com/embed/aOAH9hYvDhGSoIFJUF" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/flag-aOAH9hYvDhGSoIFJUF">via GIPHY</a></p>
+![Alt Text]<iframe src="https://giphy.com/embed/aOAH9hYvDhGSoIFJUF" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/flag-aOAH9hYvDhGSoIFJUF">via GIPHY</a></p>
 
 &nbsp;
 ### WINNING SCREEN
-<iframe src="https://giphy.com/embed/SoTfSAwYnvf0G8dIa4" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/win-SoTfSAwYnvf0G8dIa4">via GIPHY</a></p>
+![Alt Text]<iframe src="https://giphy.com/embed/SoTfSAwYnvf0G8dIa4" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/win-SoTfSAwYnvf0G8dIa4">via GIPHY</a></p>
 
 &nbsp;
 ### LOSING SCREEN
-<iframe src="https://giphy.com/embed/e7NbmLsbNimtvqquf8" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/lose-e7NbmLsbNimtvqquf8">via GIPHY</a></p>
+![Alt Text]<iframe src="https://giphy.com/embed/e7NbmLsbNimtvqquf8" width="480" height="254" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/lose-e7NbmLsbNimtvqquf8">via GIPHY</a></p>
