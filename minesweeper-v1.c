@@ -11,6 +11,12 @@
 #define colorCyan    "\e[1;36m"
 #define colorReset   "\e[1;0m"
 
+#ifdef _WIN32
+  #define SCREEN_CLEAR system("cls")
+#else
+  #define SCREEN_CLEAR system("clear");
+#endif
+
 void tableFiller(int *table, int length, char type, int bombAmount);
 void tableGetter(int *table, char type, int length);
 int bombCounter(char difficulty, int length);
@@ -19,17 +25,17 @@ void flagController(int row, int col, int *ptrFake, int length);
 void gameFinisher(int *ptrGame, int *ptrFake, int length);
 void pointFinder(int row, int col, int length, int *list);
 void bombScanner(int *ptrGame, int length, int row, int col, int *ptrFake, int newRow, int newCol, int a, int b);
-void bombAmountWriter(int *ptrGame, int length, int row, int col, int *ptrFake);
+void bombAmountWriter(int *ptrGame, int length, int row, int col, int *ptrFake, int *list);
 void tableFixer(int *ptrFake, int length);
 int gameController(int *ptrFake, int *ptrGame, int length, int bomb);
 
-int list[4];
-
 int main(){
 
-    int length, r, c, i, bombAmount, bomb = 0, *gameTable, *fakeTable, *bombTable;
+    int length, r, c, i, bombAmount, bomb = 0, *gameTable, *fakeTable, *bombTable, *list;
     char difficulty, flag;
 
+    list = (int*) malloc(sizeof(int) * 4);
+    
     printf("\t\tRules\n\n");
     printf( "-Side length should be between 4 and 50\n" );
     printf( "-If you want to open flag points you should remove flag first\n" );    
@@ -48,7 +54,7 @@ int main(){
             printf("\nSide length is not proper\n");
         }
     }
-    system("cls");
+    SCREEN_CLEAR;
 
     gameTable = (int*) malloc(sizeof(int) * (length * length));
     bombTable = (int*) malloc(sizeof(int) * (length * length));
@@ -65,7 +71,7 @@ int main(){
     for(r = 1; r <= length; r++){
         for(c = 1; c <= length; c++){
             pointFinder(r, c, length, list);
-            bombScanner(gameTable, length, r, c, bombTable, list[0], list[1], list[2], list[3]);
+            bombScanner(gameTable, length, r, c, bombTable, *list, *(list + 1), *(list + 2), *(list + 3));
         }
     }
 
@@ -81,7 +87,7 @@ int main(){
         else{
             flag = 'b';
         }
-        system("cls");
+        SCREEN_CLEAR;
 
         if(r <= 0 || r > length || c <= 0 || c > length){
             printf(colorGreen "Wrong coordinates, try again\n\n" colorReset);
@@ -123,7 +129,7 @@ int main(){
             break;
         }
         else if(bomb == 0){
-            bombAmountWriter(bombTable, length, r, c, fakeTable);
+            bombAmountWriter(bombTable, length, r, c, fakeTable, list);
             tableFixer(fakeTable, length);
         }
 
@@ -365,7 +371,7 @@ void bombScanner(int *ptrGame, int length, int row, int col, int *ptrFake, int n
     }
 }
 
-void bombAmountWriter(int *ptrGame, int length, int row, int col, int *ptrFake){
+void bombAmountWriter(int *ptrGame, int length, int row, int col, int *ptrFake, int *list){
 
     int k, j, temp, newRow, newCol, a, b;
 
@@ -373,10 +379,10 @@ void bombAmountWriter(int *ptrGame, int length, int row, int col, int *ptrFake){
         
         pointFinder(row, col, length, list);
         
-        newRow = list[0];
-        newCol = list[1];
-        a = list[2];
-        b = list[3];
+        newRow = *list;
+        newCol = *(list + 1);
+        a = *(list + 2);
+        b = *(list + 3);
         k = newRow + a;
         j = newCol + b;
         temp = newCol;
@@ -386,7 +392,7 @@ void bombAmountWriter(int *ptrGame, int length, int row, int col, int *ptrFake){
                 
                 if(*(ptrGame + (newRow - 1) * length + newCol - 1) == 0 && *(ptrFake + (newRow - 1) * length + newCol - 1) == (char)248){
                     *(ptrFake + (newRow - 1) * length + newCol - 1) = '-';
-                    bombAmountWriter(ptrGame, length, newRow, newCol, ptrFake);
+                    bombAmountWriter(ptrGame, length, newRow, newCol, ptrFake, list);
                 }
                 else if(*(ptrFake + (newRow - 1) * length + newCol - 1) != 'F'){
                     *(ptrFake + (newRow - 1) * length + newCol - 1) = *(ptrGame + (newRow - 1) * length + newCol - 1) + 48;
