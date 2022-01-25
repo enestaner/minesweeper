@@ -1,6 +1,4 @@
 
-# <div align="center">[----- DOWNLOAD LINK -----](https://github.com/enestaner/minesweeper/releases/download/exe/minesweeper-v1.exe)</div>
-
 ## MINESWEEPER 
 &nbsp;
 - On-Terminal single player game which you have to find all non-mine boxes.
