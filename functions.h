@@ -6,17 +6,27 @@
 
 int bombCounter(char difficulty, int length){           //selecting game difficulty                   
 
-    if(difficulty == 'e' || difficulty == 'E'){
-        return round(length * length * 0.07);
-    }
-    else if(difficulty == 'm' || difficulty == 'M'){
-        return round(length * length * 0.12);
-    }
-    else if(difficulty == 'h' || difficulty == 'H'){
-        return round(length * length * 0.30);
-    }
-    else{
-        return round(length * length * 0.12);
+    switch(difficulty){
+        case 'E':
+            return round(length * length * 0.07);
+
+        case 'e':
+            return round(length * length * 0.07);
+
+        case 'M':
+            return round(length * length * 0.12);
+
+        case 'm':
+            return round(length * length * 0.12);
+
+        case 'H':
+            return round(length * length * 0.30);
+
+        case 'h':
+            return round(length * length * 0.30);
+
+        default:
+            return round(length * length * 0.12);
     }
 }
 
