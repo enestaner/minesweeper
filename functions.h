@@ -4,7 +4,7 @@
 #include <math.h>
 #include "main.h"
 
-int bombCounter(char difficulty, int length){
+int bombCounter(char difficulty, int length){           //selecting game difficulty                   
 
     if(difficulty == 'e' || difficulty == 'E'){
         return round(length * length * 0.07);
@@ -20,11 +20,11 @@ int bombCounter(char difficulty, int length){
     }
 }
 
-void tableFiller(int *table, int length, char type, int bombAmount){
+void tableFiller(int *table, int length, char type, int bombAmount){     //filling table with characters depends on which type of table
 
-    int i, temp = 0;
+    int i, temp = 0;                                                     //game table just ones and zeros
 
-    srand(time(NULL));
+    srand(time(NULL));                                                   //fake table just visual and filled with special char
 
     if(type == 'g'){
 
@@ -51,11 +51,11 @@ void tableFiller(int *table, int length, char type, int bombAmount){
 }
 
 void tableGetter(int *table, char type, int length){
-    int i, j, k = 1;
+    int i, j, k = 1;                                            //printing game screen
 
-    if(type == 'g'){
+    if(type == 'g'){                                            
         for(i = 0; i < length; i++){
-            for(j = 0; j < length; j++){
+            for(j = 0; j < length; j++){                        //first part just necessary for debugging  
                 printf("%d ", *(table + i * length + j));
             }
             printf("\n");
@@ -109,12 +109,12 @@ void tableGetter(int *table, char type, int length){
     }
 }
 
-int bombController(int row, int col, int *ptrGame, int length){
+int bombController(int row, int col, int *ptrGame, int length){         //return if there is bomb or not
     
     return *(ptrGame + ((row-1) * length) + col - 1);
 }
 
-void flagController(int row, int col, int *ptrFake, int length){
+void flagController(int row, int col, int *ptrFake, int length){        //changing flag situation
     
     if(*(ptrFake + ((row-1) * length) + col - 1) == (char)248){
         *(ptrFake + ((row-1) * length) + col - 1) = 'F';
@@ -127,7 +127,7 @@ void flagController(int row, int col, int *ptrFake, int length){
     }
 }
 
-void gameFinisher(int *ptrGame, int *ptrFake, int length){
+void gameFinisher(int *ptrGame, int *ptrFake, int length){             //opening all mine boxes with 'x'
 
     int i, j;
     
@@ -141,7 +141,7 @@ void gameFinisher(int *ptrGame, int *ptrFake, int length){
     }
 }
 
-void pointFinder(int row, int col, int length, int *list){
+void pointFinder(int row, int col, int length, int *list){          //to find all surrounding points which given point
     
     int r, c, a, b;
 
@@ -209,7 +209,7 @@ void pointFinder(int row, int col, int length, int *list){
 
 void bombScanner(int *ptrGame, int length, int row, int col, int *ptrFake, int newRow, int newCol, int a, int b){
 
-    int j = 0, k = 0, sum = 0, temp = 0;
+    int j = 0, k = 0, sum = 0, temp = 0;                                              //to find how many bomb surrounding
     
     if(*(ptrGame + ((row - 1) * length) + col - 1) == 0){
 
@@ -229,7 +229,7 @@ void bombScanner(int *ptrGame, int length, int row, int col, int *ptrFake, int n
 
 void bombAmountWriter(int *ptrGame, int length, int row, int col, int *ptrFake, int *list){
 
-    int k, j, temp, newRow, newCol, a, b;
+    int k, j, temp, newRow, newCol, a, b;                              //this func controls surrounding points then prints the screen bomb amount if amount 0 then recalls itself
 
     if(*(ptrGame + (row - 1) * length + col - 1) == 0){
         
@@ -264,8 +264,8 @@ void bombAmountWriter(int *ptrGame, int length, int row, int col, int *ptrFake, 
 
 void tableFixer(int *ptrFake, int length){
 
-    int i, j;
-
+    int i, j;                                                       //one bug I cant figure it out
+                                                                    //after "bombAmountWriter" call, boxes will be '0' so this func turn them to '-'
     for(i = 1; i <= length; i++){
         for(j = 1; j <= length; j++){
             if(*(ptrFake + (i - 1) * length + j - 1) == '0'){
@@ -277,7 +277,7 @@ void tableFixer(int *ptrFake, int length){
 
 int gameController(int *ptrFake, int *ptrGame, int length, int bomb){
 
-    int i, j, point = 0;
+    int i, j, point = 0;                                    //controls every turn if all safe boxes opened or not 
     
     for(i = 1; i <= length; i++){
         for(j = 1; j <= length; j++){
