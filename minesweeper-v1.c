@@ -117,6 +117,7 @@ int main(){
     free(bombTable);
     free(gameTable);
     free(fakeTable);
-    
+    free(list);
+
     return 0;
 }
