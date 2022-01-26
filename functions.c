@@ -149,6 +149,16 @@ void gameFinisher(int *ptrGame, int *ptrFake, int length){             //opening
             *(ptrFake + i) = (char)45;
         }
     }
+
+    printf(colorRed "\n\t");
+    for(i = 0; i < length; i++){
+        printf("-");
+    }
+    printf(" GAME OVER ");
+    for(i = 0; i < length; i++){
+        printf("-");
+    }
+    printf("\n\n" colorReset);
 }
 
 void pointFinder(int row, int col, int length, int *list){          //to find all surrounding points which given point

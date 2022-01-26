@@ -85,17 +85,6 @@ int main(){
 
         if(bomb == 1){
             gameFinisher(gameTable, fakeTable, length);
-            
-            printf(colorRed "\n\t");
-            for(i = 0; i < length; i++){
-                printf("-");
-            }
-            printf(" GAME OVER ");
-            for(i = 0; i < length; i++){
-                printf("-");
-            }
-            printf("\n\n" colorReset);
-
             tableGetter(fakeTable, 'f', length);
             getchar();
             getchar();
